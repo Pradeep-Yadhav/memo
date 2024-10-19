@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                // Pulls the code from your repository
+                // Pulls the code from your repository (the correct repo URL)
                 git branch: 'main', url: 'https://github.com/Pradeep-Yadhav/memo.git'
             }
         }
@@ -12,11 +12,11 @@ pipeline {
         stage('Run Calculator Program') {
             steps {
                 script {
-                    // Check the workspace to ensure the cal.py file is there
-                    bat 'dir'
+                    // Check the workspace to ensure the cal.py file is there (Linux)
+                    sh 'ls -l'
 
-                    // Run the cal.py Python script
-                    bat 'python cal.py'
+                    // Run the calculator Python script (for Linux)
+                    sh 'python3 cal.py'
                 }
             }
         }
