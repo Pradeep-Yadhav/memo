@@ -5,7 +5,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 // Pulls the code from your repository
-                git branch: 'main', url: 'https://github.com/Pradeep-Yadhav/memo/blob/main/cal.py'
+                git branch: 'main', url: 'https://github.com/Pradeep-Yadhav/memo.git'
             }
         }
 
