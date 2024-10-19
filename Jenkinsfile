@@ -1,22 +1,20 @@
 pipeline {
-    agent any  // Use any available agent
+    agent any 
 
     stages {
-        stage('Checkout') {
+        stage('Clone Repository') {
             steps {
-                // Pulls the code from your repository (the correct repo URL)
-                git branch: 'main', url: 'https://github.com/Pradeep-Yadhav/memo.git'
+                // Clone your GitHub repository
+                git 'https://github.com/username/repo-name.git' // Replace with your repository URL
             }
         }
-
-        stage('Run Calculator Program') {
+        
+        stage('Count Files') {
             steps {
                 script {
-                    // Check the workspace to ensure the cal.py file is there (Linux)
-                    sh 'ls -l'
-
-                    // Run the calculator Python script (for Linux)
-                    sh 'python3 cal.py'
+                    // Execute a shell command to count files
+                    def fileCount = sh(script: 'find . -type f | wc -l', returnStdout: true).trim()
+                    echo "Number of files in the repository: ${fileCount}"
                 }
             }
         }
