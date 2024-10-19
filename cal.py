@@ -1,29 +1,34 @@
-def calculator():
-    print("Simple Calculator")
-    print("Select operation:")
-    print("1. Addition")
-    print("2. Subtraction")
-    print("3. Multiplication")
-    print("4. Division")
+def add(a, b):
+    return a + b
 
-    operation = input("Enter the operation (1/2/3/4): ")
+def subtract(a, b):
+    return a - b
 
-    num1 = float(input("Enter first number: "))
-    num2 = float(input("Enter second number: "))
+def multiply(a, b):
+    return a * b
 
-    if operation == '1':
-        print(f"{num1} + {num2} = {num1 + num2}")
-    elif operation == '2':
-        print(f"{num1} - {num2} = {num1 - num2}")
-    elif operation == '3':
-        print(f"{num1} * {num2} = {num1 * num2}")
-    elif operation == '4':
-        if num2 != 0:
-            print(f"{num1} / {num2} = {num1 / num2}")
-        else:
-            print("Error: Division by zero.")
+def divide(a, b):
+    if b == 0:
+        return "Error: Division by zero is not allowed."
+    return a / b
+
+def calculator(a, b, operation):
+    if operation == 'add':
+        return add(a, b)
+    elif operation == 'subtract':
+        return subtract(a, b)
+    elif operation == 'multiply':
+        return multiply(a, b)
+    elif operation == 'divide':
+        return divide(a, b)
     else:
-        print("Invalid input")
+        return "Invalid operation. Please choose from 'add', 'subtract', 'multiply', or 'divide'."
 
 if __name__ == "__main__":
-    calculator()
+    # Example usage
+    num1 = 10
+    num2 = 5
+    operation = 'add'
+    
+    result = calculator(num1, num2, operation)
+    print(f"Result: {result}")
